@@ -1,4 +1,4 @@
-require_relative 'Exceptions.rb'
+require_relative 'exceptions.rb'
 require 'digest'
 require 'net/http'
 require 'openssl'
