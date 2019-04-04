@@ -1,4 +1,4 @@
-require_relative 'Client.rb'
+require_relative 'client.rb'
 
 class BalanceGateway
   def initialize(client)

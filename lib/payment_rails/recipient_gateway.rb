@@ -1,4 +1,5 @@
-require_relative 'Client.rb'
+require_relative 'client.rb'
+require_relative 'recipient.rb'
 
 class RecipientGateway
   def initialize(client)
@@ -36,7 +37,7 @@ class RecipientGateway
     data.each do |key, value|
       next unless key === 'recipient'
       value.each do |recipKey, recipValue|
-        recipient.send("#{recipKey}=", recipValue)
+        recipient.send("#{recipKey}=", recipValue) if recipient.respond_to?(recipKey)
       end
     end
     recipient
@@ -51,7 +52,7 @@ class RecipientGateway
       value.each do |newKey, _newValue|
         recipient = Recipient.new
         newKey.each do |key1, value1|
-          recipient.send("#{key1}=", value1)
+          recipient.send("#{key1}=", value1) if recipient.respond_to?(key1)
         end
         recipients.push(recipient)
       end
